@@ -16,4 +16,9 @@ setup(
   author_email='sholsapp@gmail.com',
   url='http://www.google.com',
   packages=['secrets'],
+  install_requires=[
+    'cryptography',
+    'scipy',
+    'numpy',
+  ],
 )

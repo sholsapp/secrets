@@ -1,17 +1,10 @@
-#!/usr/bin/env python
-
-import site
-site.addsitedir('/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/')
-import numpy
-from scipy import interpolate
-
 import base64
 import binascii
 import random
 from collections import defaultdict
-from pprint import pprint
 
-from cryptography.fernet import Fernet
+import numpy
+from scipy import interpolate
 
 
 class SplitSecretStore(object):
@@ -67,18 +60,3 @@ class SplitSecretStore(object):
         constant = '0' + constant
       secret += binascii.unhexlify(constant)
     return base64.urlsafe_b64encode(secret)
-
-
-def main():
-  key = Fernet.generate_key()
-  print key
-  ss = SplitSecretStore(shards=10, required=3)
-  parts = ss.split(key)
-  for shard in parts.keys():
-    print shard
-    print parts[shard]
-  print ss.join([parts[1], parts[3], parts[7], parts[2]])
-
-
-if __name__ == '__main__':
-  main()
