@@ -17,6 +17,7 @@ setup(
   url='http://www.google.com',
   packages=['secrets'],
   install_requires=[
+    'backports.pbkdf2',
     'cryptography',
     'scipy',
     'numpy',
